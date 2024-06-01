@@ -1,0 +1,99 @@
+.containerBaloon {
+  .baloon {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    background: #e74173;
+    box-shadow: 0 0 3px 2px rgb(255, 255, 255), 0 0 2px 6px #e74173;
+    width: 160px;
+    height: 160px;
+    margin: 2em auto;
+    color: #fff;
+    background-size: cover;
+    border-radius: 50% 50% 5px 50%;
+    border: 1px solid #e8e8e8;
+    rotate: 35deg;
+
+    &.rotate-left {
+      animation: rotateBaloon infinite linear 1.5s alternate-reverse;
+    }
+    &.rotate-right {
+      animation: rotateBaloon2 infinite linear 1.5s alternate-reverse;
+    }
+    &.popped {
+      animation: popBaloon 1s forwards;
+    }
+    &.pink {
+      background: #e74173;
+    }
+    &.red {
+      background: #ca2944;
+    }
+    &.orange {
+      background: #eb31c3;
+    }
+    &.bluey {
+      background: #be85d4;
+    }
+    span {
+      position: absolute;
+      top: 60px;
+      right: 40px;
+      rotate: -55deg;
+      .right {
+        top: 60px;
+        right: 40px;
+      }
+      .left {
+        top: 20px;
+        right: 20px;
+      }
+    }
+    svg {
+      position: absolute;
+      bottom: 40px;
+      right: 50px;
+      rotate: -55deg;
+      font-size: 30px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -52px;
+      right: -25px;
+      height: 60px;
+      width: 3px;
+      rotate: -45deg;
+      border: 1px solid #e74173;
+      border-radius: 50%/100px 100px 40px 0;
+    }
+  }
+
+  @keyframes popBaloon {
+    0% {
+      scale: 1;
+      opacity: 1;
+    }
+    100% {
+      scale: 0.3;
+      opacity: 0;
+    }
+  }
+
+  @keyframes rotateBaloon {
+    0% {
+      rotate: 35deg;
+    }
+    100% {
+      rotate: 50deg;
+    }
+  }
+  @keyframes rotateBaloon2 {
+    0% {
+      rotate: 65deg;
+    }
+    100% {
+      rotate: 52deg;
+    }
+  }
+}

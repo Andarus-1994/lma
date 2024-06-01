@@ -1,0 +1,26 @@
+.catIcon {
+  position: absolute;
+  top: -55.5px;
+  left: 0;
+  svg {
+    width: 60px;
+  }
+  span {
+    white-space: nowrap;
+    position: absolute;
+    top: -25px;
+    left: 100%;
+    font-family: "Asap", sans-serif;
+    background: #fff;
+    color: #686868;
+    padding: 5px 15px;
+    border-radius: 30px;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 0 3px 0 #acacac;
+  }
+}
+.cat2 {
+  span {
+    left: 80% !important;
+  }
+}

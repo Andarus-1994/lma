@@ -5,23 +5,20 @@ export default function Text() {
   const string = "La multi ani Ioana!"
   const letters = string.split("")
 
-  const colors = ["#ec0d32", "#a70b32", "#75ad1b", "#4177a3"]
-  const generateNumber = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }
-
-  const generateRandomColor = () => {
-    return colors[generateNumber(0, colors.length - 1)]
-  }
+  const colors = ["#ce0627", "#e7406a", "#75ad1b", "#4177a3"]
+  const colorCount = colors.length
 
   const fixedColor = "#b3153c"
 
   return (
     <div className="text">
       {letters.map((letter, index) => {
+        const colorIndex = index % colorCount
+        const letterColor = colors[colorIndex]
+
         const letterAnimation = {
-          hidden: { y: 100, opacity: 0, color: generateRandomColor() },
-          visible: { y: 0, opacity: 1, color: generateRandomColor() },
+          hidden: { y: 100, opacity: 0, color: letterColor },
+          visible: { y: 0, opacity: 1, color: letterColor },
         }
 
         const letterAnimation2 = {

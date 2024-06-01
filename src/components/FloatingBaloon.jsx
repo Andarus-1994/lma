@@ -1,6 +1,6 @@
 import "./FloatingBaloon.scss"
 import { motion } from "framer-motion"
-import { GiBarbedStar } from "react-icons/gi"
+import { BsFillBalloonHeartFill } from "react-icons/bs"
 import React, { memo } from "react"
 
 const FloatingBaloon = (props) => {
@@ -36,7 +36,7 @@ const FloatingBaloon = (props) => {
         }}
         onClick={handlePop}
       >
-        <GiBarbedStar />
+        <BsFillBalloonHeartFill />
         <span className={textPos[generateNumber()]}>{text}</span>
       </motion.div>
     </div>

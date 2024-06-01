@@ -2,14 +2,15 @@
   position: absolute;
   top: -55.5px;
   left: 0;
+  z-index: 100;
   svg {
     width: 60px;
   }
   span {
     white-space: nowrap;
     position: absolute;
-    top: -25px;
-    left: 100%;
+    top: -15px;
+    left: 93%;
     font-family: "Asap", sans-serif;
     background: #fff;
     color: #686868;
@@ -23,17 +24,39 @@
 .cat2 {
   span {
     left: 80% !important;
+    top: -19px;
   }
 }
 
 .poof {
-  background: #f1efde;
+  background: #1f1f1f;
   position: absolute;
   top: 75px;
-  right: -90px;
-  height: 40px;
-  width: 40px;
+  right: -130px;
+  height: 120px;
+  width: 120px;
   clip-path: polygon(50% 0%, 74% 24%, 98% 35%, 90% 63%, 79% 91%, 48% 99%, 21% 91%, 16% 63%, 2% 35%, 21% 21%);
   box-shadow: inset 0 2px 2px 0px #8f8f8f;
   border-radius: 50px;
+  .planet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 2px;
+    width: 2px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: -10px -10px 0px 0px #fff, 20px -20px 0px 0px #fff, -30px 30px 0px 1px #fff, 40px 40px 1px 1px #fff, 50px 50px 1px 0px #fff, -60px -60px 0px 0px #fff,
+      70px 70px 0px 1px #fff, -80px -80px 0px 1px #fff, 90px 90px 1px 0px #fff, 100px -100px 1px 0px #fff;
+    animation: zoom 16s alternate infinite;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
 }

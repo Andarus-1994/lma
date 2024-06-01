@@ -21,9 +21,14 @@ export default function Cat(props) {
     return progress >= 37.5
   }
 
+  const makeHoleAppear = () => {
+    return progress >= 22 && progress <= 23
+  }
+
   useEffect(() => {
     setTheMessage("Meaw", 2, 2)
-    setTheMessage("Meaw Ioana. La meow ani!", 4, 6)
+    setTheMessage("Meaw Ioana. La meow ani!", 5, 4)
+    setTheMessage("Chill music, me likey", 12, 3)
     setTheMessage("Uu, cuute", 17, 14)
     setTheMessage("Sa vad de mai aproape", 19, 3)
     setTheMessage("uff", 22, 2)
@@ -55,6 +60,9 @@ export default function Cat(props) {
   return (
     <>
       <AnimatePresence>
+        {makeHoleAppear() && (
+          <motion.div className="poof" initial={{ y: 20, scale: 0.5, rotate: 0 }} animate={{ y: 0, scale: 1, rotate: 120 }} exit={{ scale: 0, y: 50 }}></motion.div>
+        )}
         {checkProgressCat() && (
           <motion.div
             className="catIcon"
@@ -63,7 +71,7 @@ export default function Cat(props) {
             exit={{
               x: [250, 300, 340, 380, 380, 380, 380, 380],
               y: [0, 0, 120, 220, 220, 220, 220, 220],
-              scale: [1, 1, 1, 0.7, 0.7, 0.7, 0.7, 0.7],
+              scale: [1, 1, 0.6, 0.4, 0.4, 0.7, 0.7, 0.7],
               opacity: [1, 1, 0.8, 0, 0, 0, 0, 0],
             }}
             transition={{ delay: 1, duration: 13, stiffness: 30 }}
@@ -71,7 +79,7 @@ export default function Cat(props) {
           >
             {message && (
               <motion.span
-                initial={{ x: -10, scale: 0.9, opacity: 0 }}
+                initial={{ x: -5, scale: 0.9, opacity: 0 }}
                 animate={{ x: 0, scale: 1, opacity: 1 }}
                 transition={{ duration: 1, type: "spring", stiffness: 30 }}
               >
@@ -91,7 +99,7 @@ export default function Cat(props) {
           >
             {message && (
               <motion.span
-                initial={{ x: -10, y: 10, scale: 0.9, opacity: 0 }}
+                initial={{ x: -5, y: 5, scale: 0.9, opacity: 0 }}
                 animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
                 transition={{ duration: 1, type: "spring", stiffness: 30 }}
               >

@@ -5,7 +5,7 @@ export default function Text() {
   const string = "La multi ani Ioana!"
   const letters = string.split("")
 
-  const colors = ["#ce0627", "#e7406a", "#75ad1b", "#4177a3"]
+  const colors = ["#ce0627", "#e7406a", "#75ad1b", "#2e79b6"]
   const colorCount = colors.length
 
   const fixedColor = "#b3153c"

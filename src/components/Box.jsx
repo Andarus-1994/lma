@@ -2,7 +2,7 @@ import "./Box.scss"
 import { useEffect, useRef, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInfinity, faPlayCircle, faSmileBeam, faPauseCircle, faVolumeHigh, faCakeCandles } from "@fortawesome/free-solid-svg-icons"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import ReactPlayer from "react-player"
 import Slider from "rc-slider"
 import "rc-slider/assets/index.css"
@@ -42,6 +42,15 @@ export default function Box() {
     player.current.getInternalPlayer().setVolume(e)
   }
 
+  useEffect(() => {
+    if (enjoyText) {
+      const timer = setTimeout(() => {
+        setEnjoyText(false)
+      }, 4000)
+      return () => clearTimeout(timer)
+    }
+  }, [enjoyText])
+
   return (
     <motion.div
       className="box"
@@ -51,11 +60,18 @@ export default function Box() {
     >
       <Cat songProgress={songProgress} />
       <FontAwesomeIcon icon={faInfinity} className="funda" />
-      {enjoyText && (
-        <motion.h4 initial={{ y: "20px", opacity: 0 }} animate={{ y: "0", opacity: 1 }} transition={{ duration: 2, type: "spring", delay: 1 }}>
-          Enjoy!
-        </motion.h4>
-      )}
+      <AnimatePresence>
+        {enjoyText && (
+          <motion.h4
+            initial={{ y: "20px", opacity: 0 }}
+            animate={{ y: "0", opacity: 1 }}
+            exit={{ y: -20, x: 70, scale: 0.5, rotate: 60, opacity: 0 }}
+            transition={{ duration: 2, type: "spring", delay: 1 }}
+          >
+            Enjoy!
+          </motion.h4>
+        )}
+      </AnimatePresence>
       {musicOn ? (
         <button onClick={stopMusic}>
           <FontAwesomeIcon icon={faPauseCircle} />

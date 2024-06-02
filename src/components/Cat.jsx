@@ -27,17 +27,21 @@ export default function Cat(props) {
 
   useEffect(() => {
     setTheMessage("Meaw", 2, 2)
-    setTheMessage("Meaw Ioana. La meow ani!", 5, 4)
-    setTheMessage("Chill music, me likey", 11, 3)
+    setTheMessage("Meaw Ioana. La meow ani!", 5, 5)
+    setTheMessage("Chill music, me likey", 11, 5)
     setTheMessage("Uu, cuute", 17, 14)
     setTheMessage("Sa vad de mai aproape", 19, 3)
-    setTheMessage("uff", 22, 2)
-    setTheMessage("I am back :)", 40, 3)
-    setTheMessage("Was a nice journey between the stars, but I prefer being with you", 43, 6)
-    setTheMessage("I am a golden cat now", 50, 4)
-    setTheMessage("But I am still a cat...", 56, 3)
-    setTheMessage("Hope you don't mind me sleeping", 60, 3)
-    setTheMessage("Zzzz", 63, 4)
+    setTheMessage("uff", 21, 2)
+    setTheMessage("I am back :)", 40, 4)
+    setTheMessage("Been to space, between stars", 44, 50)
+    setTheMessage("Was nice, but I still like it here more", 48, 50)
+    setTheMessage("With You", 50, 3)
+    setTheMessage("Also, I am golden now", 55, 5)
+    setTheMessage("But I am still a cat...", 60, 3)
+    setTheMessage("Yaawn, gonna sleep", 64, 10)
+    setTheMessage("Zzzz", 66, 3)
+    setTheMessage("Zz zz", 72, 3)
+    setTheMessage("Zzz", 83, 5)
     stopLegsAnimation()
   }, [progress])
 
@@ -46,7 +50,7 @@ export default function Cat(props) {
       setMessage(message)
       setTimeout(() => {
         setMessage("")
-      }, [duration * 1000])
+      }, duration * 1000)
     }
   }
 

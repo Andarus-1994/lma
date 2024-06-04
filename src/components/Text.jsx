@@ -37,7 +37,7 @@ export default function Text() {
               duration: 1.5,
               delay: 0.6 + index * 0.05,
               repeat: Infinity,
-              repeatDelay: 10,
+              repeatDelay: 12,
               type: "spring",
             }}
             style={{

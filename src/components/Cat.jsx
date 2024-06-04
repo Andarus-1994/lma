@@ -3,12 +3,14 @@ import CatIcon from "./CatIcon"
 import CatIcon2 from "./CatIcon2"
 import "./Cat.scss"
 import { motion, AnimatePresence } from "framer-motion"
-
+import { useGalaxyStore } from "../store/useGalaxyStore"
 export default function Cat(props) {
   const { songProgress } = props
   const [progress, setProgress] = useState(songProgress * 100)
   const [message, setMessage] = useState("")
   const [stopLegs, setStopLegs] = useState(false)
+  const { setGalaxy } = useGalaxyStore()
+
   useEffect(() => {
     setProgress(songProgress * 100)
   }, [songProgress])
@@ -33,16 +35,18 @@ export default function Cat(props) {
     setTheMessage("Sa vad de mai aproape", 19, 3)
     setTheMessage("uff", 21, 2)
     setTheMessage("I am back :)", 40, 4)
-    setTheMessage("Been to space, between stars", 44, 50)
-    setTheMessage("Was nice, but I still like it here more", 48, 50)
-    setTheMessage("With You", 50, 3)
+    setTheMessage("Been to space, between the stars", 44, 50)
+    setTheMessage("Was nice, but I still like it here more", 47, 50)
+    setTheMessage("Close to You", 50, 3)
     setTheMessage("Also, I am golden now", 55, 5)
-    setTheMessage("But I am still a cat...", 60, 3)
+    setTheMessage("But I am still a cat...", 61, 4)
     setTheMessage("Yaawn, gonna sleep", 64, 10)
     setTheMessage("Zzzz", 66, 3)
     setTheMessage("Zz zz", 72, 3)
     setTheMessage("Zzz", 83, 5)
+    setTheMessage("Zzz Zzz", 88, 5)
     stopLegsAnimation()
+    if (Math.floor(progress) > 65) setGalaxy(true)
   }, [progress])
 
   const setTheMessage = (message, time, duration) => {
@@ -79,7 +83,7 @@ export default function Cat(props) {
         {checkProgressCat() && (
           <motion.div
             className="catIcon"
-            initial={{ x: 0, y: 0, scale: 0.5 }}
+            initial={{ x: 0, y: [-5, 0], scale: 0.5 }}
             animate={{ x: [0, 0, 250], y: 0, scale: [0.9, 1, 1, 1] }}
             exit={{
               x: [250, 300, 340, 380, 380, 380, 380, 380],

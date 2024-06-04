@@ -1,14 +1,17 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import "./App.css"
 import FloatingBaloon from "./components/FloatingBaloon"
 import Text from "./components/Text"
 import Box from "./components/Box"
 import { createRoot } from "react-dom/client"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar, faCakeCandles, faHeart, faFaceSmileBeam } from "@fortawesome/free-solid-svg-icons"
+import { useGalaxyStore } from "./store/useGalaxyStore.js"
+import Final from "./components/Final.jsx"
 
 function App() {
+  const galaxyState = useGalaxyStore((state) => state.galaxy)
   const containerRef = useRef(null)
   const prevCoordsRef = useRef({ x: 0, y: 0 })
 
@@ -63,6 +66,14 @@ function App() {
     return icons[randomIndex]
   }
 
+  const [final, setFinal] = useState(false)
+  useEffect(() => {
+    if (galaxyState) setTimeout(() => setFinal(true), 23000)
+  }, [galaxyState])
+  const boxVariants = {
+    hidden: { opacity: 0, y: 200 },
+    visible: { opacity: 1, y: 0 },
+  }
   return (
     <motion.div
       className="container"
@@ -72,15 +83,33 @@ function App() {
       transition={{ duration: 10, repeat: Infinity, repeatType: "loop" }}
       onMouseMove={popIcons}
     >
+      {galaxyState && (
+        <motion.div
+          className="galaxy"
+          initial={{ clipPath: "circle(0% at 50% 50%)" }}
+          animate={{ clipPath: "circle(100% at 50% 50%)" }}
+          transition={{ duration: 25, type: "spring", stiffness: 2 }}
+        >
+          {" "}
+          <div className="planet"></div>
+        </motion.div>
+      )}
       <div>test</div>
       <Text />
-      <FloatingBaloon x={[1800, -500]} y={[-500, -1200]} colorNumber={0} text={"La multi ani"} />
-      <FloatingBaloon x={[2233, -200]} y={[-800, -1200]} colorNumber={1} text="yeey" />
-      <FloatingBaloon x={[2700, 0]} y={[-1200, -1200]} colorNumber={2} text="happy youu" />
-      <FloatingBaloon x={[2800, 550]} y={[-150, -1200]} colorNumber={1} rotateNumber={1} text="yuppy" />
-      <FloatingBaloon x={[2300, -500]} y={[-900, -700]} colorNumber={0} text="yay" />
-      <FloatingBaloon x={[2600, -1000]} y={[-800, 200]} colorNumber={3} text="missed" />
-      <Box />
+      {!galaxyState && (
+        <>
+          <FloatingBaloon x={[1800, -500]} y={[-500, -1200]} colorNumber={0} text={"La multi ani"} />
+          <FloatingBaloon x={[2233, -200]} y={[-800, -1200]} colorNumber={1} text="yeey" />
+          <FloatingBaloon x={[2700, 0]} y={[-1200, -1200]} colorNumber={2} text="happy youu" />
+          <FloatingBaloon x={[2800, 550]} y={[-150, -1200]} colorNumber={1} rotateNumber={1} text="yuppy" />
+          <FloatingBaloon x={[2300, -500]} y={[-900, -700]} colorNumber={0} text="yay" />
+          <FloatingBaloon x={[2600, -1000]} y={[-800, 200]} colorNumber={3} text="missed" />
+        </>
+      )}
+      <AnimatePresence>{final && <Final />}</AnimatePresence>
+      <motion.div initial={final ? "visible" : "hidden"} animate={final ? "hidden" : "visible"} variants={boxVariants} transition={{ duration: 3 }}>
+        <Box />
+      </motion.div>
     </motion.div>
   )
 }

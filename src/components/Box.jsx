@@ -65,7 +65,7 @@ export default function Box() {
           <motion.h4
             initial={{ y: "20px", opacity: 0 }}
             animate={{ y: "0", opacity: 1 }}
-            exit={{ y: -20, x: 70, scale: 0.5, rotate: 60, opacity: 0 }}
+            exit={{ y: -20, x: 70, scale: 0.2, rotate: 60, opacity: 0 }}
             transition={{ duration: 2, type: "spring", delay: 1 }}
           >
             Enjoy!

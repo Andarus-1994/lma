@@ -33,7 +33,7 @@ export default function Final() {
           type: "spring",
         }}
       >
-        Stiu ca esti la munca azi, dar sper sa ai o zi smechera si plina de surpize, caci azi esti star of the show, desi eu nu cred ca esti doar azi 😊
+        Stiu ca esti la munca azi, dar sper sa ai o zi smechera si plina de surpize, pentru ca azi esti star of the show, desi eu nu cred ca esti doar azi 😊
       </motion.div>
 
       <motion.div
@@ -59,7 +59,7 @@ export default function Final() {
           delay: 0.6 + 9,
           type: "spring",
         }}
-        style={{ marginTop: "40px" }}
+        style={{ marginTop: "70px", fontSize: "30px" }}
       >
         PS: Sper ca ti-a placut totusi si ca nu a fost prea cringe animatia 🙈
       </motion.div>
@@ -72,7 +72,7 @@ export default function Final() {
           delay: 0.6 + 14,
           type: "spring",
         }}
-        style={{ marginTop: "40px" }}
+        style={{ marginTop: "40px", fontSize: "30px" }}
       >
         Some HS later tho ? <span>🎮</span>{" "}
       </motion.div>

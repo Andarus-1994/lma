@@ -67,6 +67,7 @@ function App() {
   }
 
   const [final, setFinal] = useState(false)
+  const [showFinal, setShowFinal] = useState(false)
   useEffect(() => {
     if (galaxyState) setTimeout(() => setFinal(true), 23000)
   }, [galaxyState])
@@ -74,6 +75,19 @@ function App() {
     hidden: { opacity: 0, y: 200 },
     visible: { opacity: 1, y: 0 },
   }
+
+  useEffect(() => {
+    let timer
+    if (final) {
+      timer = setTimeout(() => {
+        setShowFinal(true)
+      }, 2000)
+    } else {
+      setShowFinal(false)
+    }
+
+    return () => clearTimeout(timer)
+  }, [final])
   return (
     <motion.div
       className="container"
@@ -106,7 +120,7 @@ function App() {
           <FloatingBaloon x={[2600, -1000]} y={[-800, 200]} colorNumber={3} text="missed" />
         </>
       )}
-      <AnimatePresence>{final && <Final />}</AnimatePresence>
+      <AnimatePresence>{showFinal && <Final />}</AnimatePresence>
       <motion.div initial={final ? "visible" : "hidden"} animate={final ? "hidden" : "visible"} variants={boxVariants} transition={{ duration: 3 }}>
         <Box />
       </motion.div>
